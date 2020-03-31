@@ -1,0 +1,46 @@
+<div fxLayout="row" fxLayoutAlign="center center" style="width: 75%;">
+  <mat-card>
+    <mat-card-title>
+      Procedure Select
+    </mat-card-title>
+    <mat-card-content>
+      <div fxLayout="row" fxLayoutAlign="start start">
+        Select a procedure
+        <mat-form-field>
+          <mat-label>Select Procedure</mat-label>
+          <mat-select [formControl]="procedureSelection">
+            <mat-option
+              *ngFor="let procedure of procedures"
+              [value]="procedure.procedureName"
+            >
+              {{ procedure.procedureName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div
+        fxLayout="row"
+        fxLayoutAlign="start start"
+        *ngIf="!!selectedProcedure"
+      >
+        Select a role
+        <mat-form-field>
+          <mat-label>Select Role</mat-label>
+          <mat-select [formControl]="roleSelection">
+            <mat-option
+              *ngFor="let role of rolesForSelectedProcdure"
+              [value]="role"
+            >
+              {{ role }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <h3 *ngIf="!!selectedProcedure">
+        Run Procedure {{ selectedProcedure.procedureName }}?
+      </h3>
+    </mat-card-content>
+  </mat-card>
+</div>

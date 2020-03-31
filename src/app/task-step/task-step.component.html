@@ -1,0 +1,40 @@
+<mat-card>
+  <mat-card-title *ngIf="stepHasTitle">
+    {{ stepTitle }}
+  </mat-card-title>
+  <mat-card-content>
+    <div fxLayout="row" fxLayoutAlign="space-between stretch">
+      <div fxFlex="33">
+        <h3>Instructions</h3>
+        <span *ngFor="let instructions of stepInstructions">
+          <p>{{ instructions }}</p>
+        </span>
+      </div>
+      <div fxFlex="33">
+        <h3>Warnings/Cautions</h3>
+
+        <mat-card *ngFor="let dangerItem of stepDangerList">
+          <mat-card-header
+            [style.background-color]="dangerItem.isCautionTag ? 'gold' : 'red'"
+          >
+            <mat-card-title>
+              {{ dangerItem.isCautionTag ? "CAUTION" : "WARNING" }}
+            </mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+            {{ dangerItem.tag }}
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <section fxFlex="33">
+        <h3>Task List</h3>
+        <div *ngFor="let task of stepTaskList">
+          <mat-checkbox>
+            {{ task }}
+          </mat-checkbox>
+        </div>
+      </section>
+    </div>
+  </mat-card-content>
+</mat-card>
