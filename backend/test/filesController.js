@@ -40,3 +40,4 @@ describe('files controller', function() {
             .expect(422, done)
     });
 });
+app.shutdown();
